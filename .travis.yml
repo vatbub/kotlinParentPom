@@ -1,17 +1,17 @@
 language: java
 sudo: required
 jdk:
-- openjdk8
+  - openjdk8
 cache:
   directories:
-  - $HOME/.m2
+    - $HOME/.m2
 script: mvn deploy -B --settings mavenSettings.xml
 branches:
   only:
-  - master
+    - master
 notifications:
   email:
     recipients:
-    - vatbub123+travisbuildnotification@googlemail.com
+      - vatbub123+travisbuildnotification@googlemail.com
     on_success: never
     on_failure: always
