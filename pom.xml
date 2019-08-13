@@ -54,6 +54,13 @@
         <version>0.0.27-SNAPSHOT</version>
     </parent>
 
+    <scm>
+        <connection>scm:git:git@github.com:vatbub/kotlinParentPom.git</connection>
+        <developerConnection>scm:git:git@github.com:vatbub/kotlinParentPom.git</developerConnection>
+        <url>https://github.com/vatbub/kotlinParentPom</url>
+    </scm>
+
+
     <artifactId>kotlinParentPom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
