@@ -5,10 +5,9 @@ jdk:
 cache:
   directories:
     - $HOME/.m2
-script: mvn deploy -B --settings mavenSettings.xml
-branches:
-  only:
-    - master
+script: mvn verify -B --settings mavenSettings.xml
+after_success:
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then mvn deploy --settings mavenSettings.xml; fi
 notifications:
   email:
     recipients:
