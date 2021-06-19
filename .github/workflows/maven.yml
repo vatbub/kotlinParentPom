@@ -23,8 +23,8 @@ jobs:
           distribution: 'adopt-hotspot'
       - name: Import GPG Keys
         run: |
-          if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEY | $GPG_EXECUTABLE --import; fi
-          if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNER_TRUST | $GPG_EXECUTABLE --import-ownertrust; fi
+          if [ ! -z "$GPG_SECRET_KEY" ]; then echo $GPG_SECRET_KEY | $GPG_EXECUTABLE --import; fi
+          if [ ! -z "$GPG_OWNER_TRUST" ]; then echo $GPG_OWNER_TRUST | $GPG_EXECUTABLE --import-ownertrust; fi
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
