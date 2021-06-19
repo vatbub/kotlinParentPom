@@ -17,6 +17,7 @@
 
     <name>Vatbub's kotlin parent pom</name>
     <description>A parent pom file for all of my kotlin projects.</description>
+    <inceptionYear>2019</inceptionYear>
 
     <developers>
         <developer>
