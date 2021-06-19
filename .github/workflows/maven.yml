@@ -21,10 +21,6 @@ jobs:
       with:
         java-version: '16'
         distribution: 'adopt-hotspot'
-    - name: Restore Maven cache
-      uses: skjolber/maven-cache-github-action@v1
-      with:
-        step: restore
     - name: Print maven version
       run: mvn -v
     - name: Build with Maven
@@ -41,9 +37,5 @@ jobs:
         maven-publish-args: "--update-snapshots -Dskip.unit.tests=true -Dskip.integration.tests=true"
         maven-release-publish: "true"
         maven-snapshot-publish: "true"
-    - name: Save Maven cache
-      uses: skjolber/maven-cache-github-action@v1
-      with:
-        step: save
         
         
