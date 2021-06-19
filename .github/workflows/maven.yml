@@ -16,11 +16,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 16
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           java-version: '15'
           distribution: 'adopt-hotspot'
+      - name: Install GPG
+        run: sudo apt-get install gnupg2
       - name: Import GPG Keys
         run: |
           echo ${{ secrets.GPG_SECRET_KEY }} | ${{ secrets.GPG_EXECUTABLE }} --import
