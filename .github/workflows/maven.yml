@@ -25,8 +25,8 @@ jobs:
         run: sudo apt-get install gnupg2
       - name: Import GPG Keys
         run: |
-          echo ${{ secrets.GPG_SECRET_KEY }} | ${{ secrets.GPG_EXECUTABLE }} --import
-          echo ${{ secrets.GPG_OWNER_TRUST }} | ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust
+          echo "${{ secrets.GPG_SECRET_KEY }}" | ${{ secrets.GPG_EXECUTABLE }} --import
+          echo "${{ secrets.GPG_OWNER_TRUST }}" | ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
