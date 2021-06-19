@@ -21,14 +21,12 @@ jobs:
         with:
           java-version: '15'
           distribution: 'adopt-hotspot'
-      - name: Import GPG Keys
-        run: |
-          export GPG_TTY=$(tty)
-          ${{ secrets.GPG_EXECUTABLE }} --list-keys
-          echo "${{ secrets.GPG_SECRET_KEY }}" > gpgKey.txt
-          echo "${{ secrets.GPG_OWNER_TRUST }}" > gpgOwnerTrust.txt
-          ${{ secrets.GPG_EXECUTABLE }} --import gpgKey.txt
-          ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust gpgOwnerTrust.txt
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
