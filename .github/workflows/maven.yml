@@ -21,10 +21,6 @@ jobs:
       with:
         java-version: '16'
         distribution: 'adopt'
-    - name: Echo Java Home
-      run: |
-        echo $JAVA_HOME
-        ls $JAVA_HOME/bin
     - name: Restore Maven cache
       uses: skjolber/maven-cache-github-action@v1
       with:
