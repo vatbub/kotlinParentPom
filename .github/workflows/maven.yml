@@ -25,6 +25,8 @@ jobs:
       uses: skjolber/maven-cache-github-action@v1
       with:
         step: restore
+    - name: Print maven version
+      run: mvn -v
     - name: Build with Maven
       run: mvn --update-snapshots clean verify 
     - name: Release
