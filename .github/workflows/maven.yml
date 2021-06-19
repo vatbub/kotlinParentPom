@@ -23,8 +23,8 @@ jobs:
           distribution: 'adopt-hotspot'
       - name: Import GPG Keys
         run: |
-          if [ ! -z "$GPG_SECRET_KEY" ]; then echo $GPG_SECRET_KEY | $GPG_EXECUTABLE --import; fi
-          if [ ! -z "$GPG_OWNER_TRUST" ]; then echo $GPG_OWNER_TRUST | $GPG_EXECUTABLE --import-ownertrust; fi
+          echo ${{ secrets.GPG_SECRET_KEY }} | ${{ secrets.GPG_EXECUTABLE }} --import
+          echo ${{ secrets.GPG_OWNER_TRUST }} | ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
@@ -32,9 +32,16 @@ jobs:
       - name: Print maven version
         run: mvn -v
       - name: Build with Maven
-        run: mvn --update-snapshots clean verify -B --settings mavenSettings.xml
+        run: mvn --update-snapshots clean package -B --settings mavenSettings.xml
       - name: Release
         run: mvn --update-snapshots deploy -Dskip.unit.tests=true -Dskip.integration.tests=true -B --settings mavenSettings.xml
+        env:
+          GPG_EXECUTABLE: ${{ secrets.GPG_EXECUTABLE }}
+          GPG_OWNER_TRUST: ${{ secrets.GPG_OWNER_TRUST }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
