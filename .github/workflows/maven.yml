@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '16'
-        distribution: 'adopt'
+        distribution: 'adopt-hotspot'
     - name: Restore Maven cache
       uses: skjolber/maven-cache-github-action@v1
       with:
