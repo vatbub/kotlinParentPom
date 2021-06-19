@@ -24,6 +24,7 @@ jobs:
       - name: Import GPG Keys
         run: |
           export GPG_TTY=$(tty)
+          ${{ secrets.GPG_EXECUTABLE }} --list-keys
           echo "${{ secrets.GPG_SECRET_KEY }}" | ${{ secrets.GPG_EXECUTABLE }} --import
           echo "${{ secrets.GPG_OWNER_TRUST }}" | ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust
       - name: Restore Maven cache
