@@ -35,7 +35,7 @@ jobs:
         run: mvn --update-snapshots clean verify -B --settings mavenSettings.xml
       - name: Release
         run: mvn --update-snapshots clean verify -Dskip.unit.tests=true -Dskip.integration.tests=true -B --settings mavenSettings.xml
-    - name: Save Maven cache
-      uses: skjolber/maven-cache-github-action@v1
-      with:
-        step: save
+      - name: Save Maven cache
+        uses: skjolber/maven-cache-github-action@v1
+        with:
+          step: save
