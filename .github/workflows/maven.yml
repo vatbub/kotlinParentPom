@@ -25,7 +25,10 @@ jobs:
         run: |
           export GPG_TTY=$(tty)
           ${{ secrets.GPG_EXECUTABLE }} --list-keys
-          echo "${{ secrets.GPG_SECRET_KEY }}" | ${{ secrets.GPG_EXECUTABLE }} --import
+          echo "${{ secrets.GPG_SECRET_KEY }}" > gpgKey.txt
+          echo "${{ secrets.GPG_OWNER_TRUST }}" > gpgOwnerTrust.txt
+          ${{ secrets.GPG_EXECUTABLE }} --import gpgKey.txt
+          ${{ secrets.GPG_EXECUTABLE }} --import-ownertrust gpgOwnerTrust.txt
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
