@@ -351,6 +351,84 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jlink-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <classifier>runtime-image</classifier>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.akman</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>0.1.3</version>
+                    <configuration>
+                        <dest>${project.build.directory}/jpackage</dest>
+
+                        <!--
+                          Specifies the name of subdirectory relative to the destination
+                          directory in which files of generated application image are placed.
+                        -->
+                        <name>${project.name}</name>
+
+                        <!--
+                          Specifies the type of package to
+                          create: { PLATFORM | IMAGE | EXE | MSI }.
+                          Default value: PLATFORM (a platform dependent default type)
+                        -->
+                        <type>IMAGE</type>
+
+                        <!--
+                          Specifies version of the application and/or package.
+                        -->
+                        <appversion>${project.version}</appversion>
+
+                        <!--
+                          Specifies copyright for the application.
+                        -->
+                        <copyright>${copyright}</copyright>
+
+                        <!--
+                          Specifies description of the application.
+                        -->
+                        <description>${project.description}</description>
+
+                        <!--
+                          Specifies vendor of the application.
+                        -->
+                        <vendor>${project.organization.name}</vendor>
+
+                        <!--
+                          Specifies the location of the icon of the application package.
+                        -->
+                        <icon>${project.basedir}/config/jpackage/resources/icon.ico</icon>
+
+                        <!--
+                          Specifies the main module (and optionally main class) of
+                          the application. This module must be located on the module path.
+                          When this option is specified, the main module will be linked
+                          in the Java runtime image.
+                          Either module or main-jar option can be specified
+                          but not both.
+                        -->
+                        <module>${mainModule}/${mainClass}</module>
+
+                        <!--
+                          Specifies the options to pass to the Java runtime.
+                        -->
+                        <javaoptions>-Dfile.encoding=UTF-8 -Xms256m -Xmx512m</javaoptions>
+
+                        <!--
+                          Specifies the location of a resources directory that override
+                          jpackage resources. Icons, template files, and other resources
+                          of jpackage can be overridden by adding replacement resources
+                          to this directory.
+                        -->
+                        <resourcedir>${project.basedir}/config/jpackage/resources</resourcedir>
+
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.1.0</version>
                 </plugin>
