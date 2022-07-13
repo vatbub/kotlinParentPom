@@ -64,7 +64,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jupiter.version>5.8.1</jupiter.version>
         <kotlin.version>1.5.31</kotlin.version>
-        <dokka.version>1.5.31</dokka.version>
+        <dokka.version>1.7.10</dokka.version>
         <sonar.links.homepage>https://github.com/vatbub/${gitRepoName}/</sonar.links.homepage>
         <sonar.links.scm>https://github.com/vatbub/${gitRepoName}/</sonar.links.scm>
     </properties>
