@@ -52,7 +52,7 @@
         <gitRepoName>kotlinParentPom</gitRepoName>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jupiter.version>5.9.2</jupiter.version>
-        <kotlin.version>1.8.0</kotlin.version>
+        <kotlin.version>2.2.20</kotlin.version>
         <dokka.version>1.8.10</dokka.version>
         <sonar.links.homepage>https://github.com/vatbub/${gitRepoName}/</sonar.links.homepage>
         <sonar.links.scm>https://github.com/vatbub/${gitRepoName}/</sonar.links.scm>
