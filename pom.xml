@@ -51,7 +51,7 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <gitRepoName>kotlinParentPom</gitRepoName>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jupiter.version>5.9.2</jupiter.version>
+        <jupiter.version>5.13.4</jupiter.version>
         <kotlin.version>1.8.0</kotlin.version>
         <dokka.version>1.8.10</dokka.version>
         <sonar.links.homepage>https://github.com/vatbub/${gitRepoName}/</sonar.links.homepage>
